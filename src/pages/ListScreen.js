@@ -1,14 +1,8 @@
-import React from 'react';
-
 import List from '../components/List';
-
-const Home = () => {
-    
+export default function ListScreen() {
     return (
         <>
-
+            <List />
         </>
     );
-};
-
-export default Home;
+}
