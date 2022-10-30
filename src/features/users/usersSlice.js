@@ -6,7 +6,6 @@ export const userSlice = createSlice({
     reducers: {
         addUser: (state, action) => {
             const user = {
-                id: uuid(),
                 text: action.payload,
             };
 
@@ -16,7 +15,7 @@ export const userSlice = createSlice({
 });
 
 // this is for dispatch
-export const { addUser } = todoSlice.actions;
+export const { addUser } = userSlice.actions;
 
 // this is for configureStore
 export default userSlice.reducer;

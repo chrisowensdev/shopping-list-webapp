@@ -7,7 +7,7 @@ const BottomMenuContainer = styled.section`
     color: #fff;
     font-size: 30px;
     padding: 10px 0;
-    position: fixed;
+    position: absolute;
     bottom: 0;
     width: 100%;
     max-width: 500px;

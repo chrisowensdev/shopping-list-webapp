@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import styled from 'styled-components';
 
+import AddListItem from './AddListItem';
 import ListItem from './ListItem';
 
 // const listItems = [
@@ -32,7 +33,6 @@ const ListContainer = styled.ul`
 
 export default function List() {
     const [list, setList] = useState([]);
-    const [newItem, setNewItem] = useState('');
 
     useEffect(() => {
         const saved = localStorage.getItem('list');
@@ -74,7 +74,6 @@ export default function List() {
                 complete: false,
             },
         ]);
-        setNewItem('');
         localStorage.setItem('list', JSON.stringify(list));
     }
 
@@ -86,14 +85,7 @@ export default function List() {
     return (
         <>
             <h1>List</h1>
-            <form onSubmit={(e) => addListItem(e, newItem)}>
-                <input
-                    type='text'
-                    value={newItem}
-                    onChange={(e) => setNewItem(e.target.value)}
-                />
-                <button>+</button>
-            </form>
+            <AddListItem addListItem={addListItem} />
             <ListContainer>
                 {incompleteItems.map((item) => (
                     <ListItem
