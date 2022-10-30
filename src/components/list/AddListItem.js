@@ -1,17 +1,51 @@
 import { useState } from 'react';
+import styled from 'styled-components';
+import { MdAddCircleOutline } from 'react-icons/md';
+
+const AddItemForm = styled.form`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+const AddItemInput = styled.input`
+    background-color: #0b344a;
+    border: none;
+    color: #fff;
+    width: 80%;
+    padding: 10px;
+    font-size: 15px;
+    margin: 10px;
+`;
+
+const AddItemButton = styled.button`
+    border: none;
+    background: none;
+    color: white;
+    font-size: 30px;
+    display: flex;
+`;
 
 export default function AddListItem(props) {
     const { addListItem } = props;
     const [newItem, setNewItem] = useState('');
 
+    const handleSubmit = (newItem) => {
+        addListItem(newItem);
+        setNewItem('');
+    };
+
     return (
-        <form onSubmit={(e) => addListItem(e, newItem)}>
-            <input
+        <AddItemForm onSubmit={(e) => handleSubmit(newItem)}>
+            <AddItemInput
                 type='text'
                 value={newItem}
+                placeholder='Add Item'
                 onChange={(e) => setNewItem(e.target.value)}
             />
-            <button>+</button>
-        </form>
+            <AddItemButton>
+                <MdAddCircleOutline />
+            </AddItemButton>
+        </AddItemForm>
     );
 }
