@@ -64,8 +64,7 @@ export default function List() {
         localStorage.setItem('list', JSON.stringify(list));
     }
 
-    function addListItem(e, title) {
-        e.preventDefault();
+    function addListItem(title) {
         setList([
             ...list,
             {

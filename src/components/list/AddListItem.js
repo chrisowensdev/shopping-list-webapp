@@ -30,13 +30,14 @@ export default function AddListItem(props) {
     const { addListItem } = props;
     const [newItem, setNewItem] = useState('');
 
-    const handleSubmit = (newItem) => {
+    const handleSubmit = (e, newItem) => {
+        e.preventDefault();
         addListItem(newItem);
         setNewItem('');
     };
 
     return (
-        <AddItemForm onSubmit={(e) => handleSubmit(newItem)}>
+        <AddItemForm onSubmit={(e) => handleSubmit(e, newItem)}>
             <AddItemInput
                 type='text'
                 value={newItem}
